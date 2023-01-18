@@ -23,10 +23,11 @@ namespace WindowsEFDatos
 
         private void FrmAvion_Load(object sender, EventArgs e)
         {
+            CrearLineaArea();
             TraerAviones();
         }
 
-
+       
 
         private void btnCrearAvion_Click(object sender, EventArgs e)
         {
@@ -47,6 +48,16 @@ namespace WindowsEFDatos
         private void TraerAviones()
         {
             gridAviones.DataSource = AbmAvion.Listar();
+        }
+
+        private static void CrearLineaArea()
+        {
+            LineaArea lineaAerea = new LineaArea()
+            {
+                Nombre = "American",
+                FechaInicioActividades = DateTime.Now
+            };
+            AbmLinea.Insertar(lineaAerea);
         }
     }
 }

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dac\AbmAvion.cs" />
+    <Compile Include="Dac\AbmLinea.cs" />
     <Compile Include="Data\WindowsEFDatosContext.cs" />
     <Compile Include="FrmAvion.cs">
       <SubType>Form</SubType>
