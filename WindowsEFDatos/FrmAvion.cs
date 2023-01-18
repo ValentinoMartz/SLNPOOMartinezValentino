@@ -59,5 +59,46 @@ namespace WindowsEFDatos
             };
             AbmLinea.Insertar(lineaAerea);
         }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Avion avion = new Avion()
+            {
+                Capacidad = Convert.ToInt32(txtCapacidad.Text),
+                Denominacion = txtDenominacion.Text,
+                IdAvion = Convert.ToInt32(txtId.Text)
+            };
+            int encontrado = AbmAvion.Editar(avion);
+            
+            if (encontrado > 0)
+            {
+                MessageBox.Show($"Avion Editado");
+                TraerAviones();
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtId.Text);
+            int respuesta = AbmAvion.Delete(id);
+            if (respuesta > 0)
+            {
+                MessageBox.Show($"Avion Eliminado");
+                TraerAviones();
+            }
+        }
+
+        private void btnTraerPorID_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtId.Text);
+            Avion avionEncontrado = AbmAvion.TraerUno(id);
+            if (avionEncontrado != null)
+            {
+                MessageBox.Show($"Avion Encontrado: {avionEncontrado.Denominacion} - {avionEncontrado.Capacidad}");
+                TraerAviones();
+            }
+        }
+
+
     }
 }

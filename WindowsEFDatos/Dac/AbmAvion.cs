@@ -23,5 +23,28 @@ namespace WindowsEFDatos.Dac
 
             return context.SaveChanges();
         }
+
+        public static int Editar(Avion avion)
+        {
+            Avion avionOrigen = context.Aviones.Find(avion.IdAvion);
+            avionOrigen.Capacidad = avion.Capacidad;
+            avionOrigen.Denominacion = avion.Denominacion;
+           
+            return context.SaveChanges();
+        }
+        public static int Delete(int id)
+        {
+            Avion avionOrigen = context.Aviones.Find(id);
+            if (avionOrigen != null)
+            {
+                context.Aviones.Remove(avionOrigen);
+                return context.SaveChanges();
+            }
+
+            return 0;
+        }
+        public static Avion TraerUno(int id) {
+            return context.Aviones.Find(id);
+        }
     }
 }
